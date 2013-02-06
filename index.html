@@ -11,12 +11,12 @@
 	<link rel="stylesheet" href="core/deck.core.css">
 
 	<!-- Extension CSS files go here. Remove or add as needed. -->
-	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
 	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
 	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
 	<link rel="stylesheet" href="extensions/status/deck.status.css">
 	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
 	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="extensions/toc/deck.toc.css">
 
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
 	<link rel="stylesheet" href="themes/style/web-2.0.css">
@@ -29,19 +29,66 @@
 </head>
 <body class="deck-container">
 
+<div class="deck-toc"></div>
 <!-- Begin slides. Just make elements with a class of slide. -->
-
 <section class="slide">
-	<h1>Slide</h1>
+  <h1>Begin</h1>
 </section>
 
 <section class="slide">
-	<h1>Content</h1>
+  <h2>Slide</h2>
+  <p>
+    toto je test
+    </br>
+    Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny. Nejvíce popularizováno bylo Lorem Ipsum v šedesátých letech 20. století, kdy byly vydávány speciální vzorníky s jeho pasážemi a později pak díky počítačovým DTP programům jako Aldus PageMaker.
+  </p>
 </section>
 
 <section class="slide">
-	<h1>Here</h1>
+	<h2>Content</h2>
 </section>
+
+<section class="slide">
+	<h2>Kitteh Plz</h2>
+  <img src="http://placekitten.com/600/375" alt="Kitties">
+</section>
+
+<section class="slide deck-current">
+  <h2>Slide Header</h2>
+  <p>Here is a list of points:</p>
+  <ul>
+    <li class="slide">Point 1</li>
+    <li class="slide">Point 2</li>
+    <li class="slide">Point 3</li>
+  </ul>
+</section>
+
+<section class="slide deck-next">
+  <h2>Another Slide</h2>
+  <blockquote cite="http://example.com">
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p><cite>Cicero</cite></p>
+  </blockquote>
+</section>
+
+
+<section class="slide deck-current" id="markup">
+  <h2>The Markup</h2>
+  <p>Slides are just HTML elements with a class of <code>slide</code>.</p>
+  <pre><code>&lt;section class="slide"&gt;
+  &lt;h2&gt;How to Make a Deck&lt;/h2&gt;
+  &lt;ol&gt;
+    &lt;li&gt;
+      &lt;h3&gt;Write Slides&lt;/h3&gt;
+      &lt;p&gt;Slide content is simple HTML.&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;h3&gt;Choose Themes&lt;/h3&gt;
+      &lt;p&gt;One for slide styles and one for deck transitions.&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/section&gt;</code></pre>
+  </section>
 
 <!-- End slides. -->
 
@@ -59,14 +106,6 @@
 	<span class="deck-status-total"></span>
 </p>
 
-<!-- deck.goto snippet -->
-<form action="." method="get" class="goto-form">
-	<label for="goto-slide">Go to slide:</label>
-	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-	<datalist id="goto-datalist"></datalist>
-	<input type="submit" value="Go">
-</form>
-
 <!-- deck.hash snippet -->
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
@@ -81,10 +120,10 @@
 <script src="core/deck.core.js"></script>
 <script src="extensions/hash/deck.hash.js"></script>
 <script src="extensions/menu/deck.menu.js"></script>
-<script src="extensions/goto/deck.goto.js"></script>
 <script src="extensions/status/deck.status.js"></script>
 <script src="extensions/navigation/deck.navigation.js"></script>
 <script src="extensions/scale/deck.scale.js"></script>
+<script src="extensions/toc/deck.toc.js"></script>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
