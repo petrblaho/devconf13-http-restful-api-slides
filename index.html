@@ -41,7 +41,7 @@
       <div class="slides">
 
         <section>
-          <h1>Designing HTTP<br/>REST<span class="smaller">ful</span> API<span class="smaller">s</span></h1>
+          <h1>Designing <br/>HTTP REST<span class="smaller">ful</span> API<span class="smaller">s</span></h1>
           <h3>Petr Blaho &amp; Jiri Stransky</h3>
         </section>
 
@@ -66,6 +66,78 @@
             <li>Intro to HTTP RESTful APIs</li>
             <li>A few practical issues</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>REST</h2>
+          <p>
+            (REpresentational State Transfer)
+          </p>
+          <p>
+            = Architectural style for communication<br/>between remote applications
+          </p>
+        </section>
+
+        <section>
+          <h2>REST</h2>
+          <ul>
+            <li class="fragment">Client-server</li>
+            <li class="fragment">Stateless (request-response)</li>
+            <li class="fragment">Uniform interface</li>
+            <li class="fragment">Caching, layering</li>
+            <li class="fragment">(Code-on-demand)</li>
+            <li class="fragment">Exchange of <em>resource representation</em></li>
+          </ul>
+          <aside class="notes">
+            <p>
+              Client-server - simple communication (everything talks to some
+              central point). OTOH, it makes server the weak spot.
+            </p>
+            <p>
+              Stateless - each request from client contains all information
+              necessary to understand the request
+            </p>
+            <p>
+              Uniform interface - constraints to bring order to the
+              communication and make it easier to reason about the API. OTOH,
+              standardizing the form means the communication cannot be
+              arbitrarily tailored to specific use cases.
+            </p>
+            <p>
+              Caching, layering - certain types of responses can be cached.
+              Caching can happen on the client or on the server, and for
+              unencrypted communication, caching can also happen midway between
+              client and server.
+            </p>
+            <p>
+              Code-on-demand - optional. Make clients simpler by sending
+              executable code from client to server (e.g. JavaScript). For
+              non-web-browser clients, this is used rarely.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Resource</h2>
+          <p>
+          </p>
+          <ul>
+            <li></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Resource representation</h2>
+          <p>
+          </p>
+          <ul>
+            <li></li>
+          </ul>
+        </section>
+
+        <section>
+          <p>Default reveal.js slides from now on</p>
+          <p>(to serve as reference and be removed later)</p>
         </section>
 
         <section>
