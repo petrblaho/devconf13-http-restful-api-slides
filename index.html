@@ -142,17 +142,45 @@
             <li>Provides uniform interface</li>
             <li>Standard request methods</li>
             <li>Standard response codes</li>
+            <li>HTTP REST is often used as CRUD</li>
           </ul>
         </section>
 
         <section>
           <h2>HTTP request methods</h2>
           <ul>
-            <li>GET</li>
-            <li>PUT</li>
-            <li>DELETE</li>
-            <li>POST</li>
+            <li>POST - C</li>
+            <li>GET - R</li>
+            <li>PUT - U</li>
+            <li>DELETE - D</li>
             <li>(HEAD, OPTIONS, ...)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>POST</h2>
+          <ul>
+            <li>Create a subordinate resource (C<span class="smaller">RUD</span>)</li>
+            <li>Sometimes used to perform a general action
+              <ul>
+                <li>Clashes with Uniform Interface constraint</li>
+                <li>At least make it discoverable</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>POST</h2>
+        </section>
+
+        <section>
+          <h2>GET</h2>
+          <ul>
+            <li>Request a representation of a resource (<span class="smaller">C</span>R<span class="smaller">UD</span>)</li>
+            <li>Safe (no side effects)</li>
+            <li>Crawlable (if discoverable)</li>
+            <li>Caching possibility</li>
           </ul>
         </section>
 
@@ -162,14 +190,35 @@
 
         <section>
           <h2>PUT</h2>
+          <ul>
+            <li>
+              Store a resource to URI
+              <ul>
+                <li>Usually for updating (<span class="smaller">CR</span>U<span class="smaller">D</span>)</li>
+                <li>
+                  Sometimes for creating (C<span class="smaller">RUD</span>)
+                  <ul>
+                    <li>If you know target URI</li>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <li>Send a full representation of the resource</li>
+        </section>
+
+        <section>
+          <h2>PUT</h2>
         </section>
 
         <section>
           <h2>DELETE</h2>
+          <ul>
+            <li>delete a resource</li>
+          </ul>
         </section>
 
         <section>
-          <h2>POST</h2>
+          <h2>DELETE</h2>
         </section>
 
         <section>
