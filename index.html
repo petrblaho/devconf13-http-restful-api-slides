@@ -123,6 +123,7 @@
             <li>Any information that can be named</li>
             <li>Identity - URI (URL)</li>
             <li>Can be mutable</li>
+            <li>Elements, collections</li>
           </ul>
         </section>
 
@@ -172,20 +173,93 @@
 
         <section>
           <h2>POST</h2>
+<pre>
+<code class="http" contenteditable>POST /users HTTP/1.1
+Accept: application/xml
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;user&gt;
+  &lt;name&gt;Alice Adams&lt;/name&gt;
+&lt;/user&gt;</code></code></pre>
+
+<pre>
+<code class="http" contenteditable>HTTP/1.1 201 Created
+Location: http://api.myapp.org/users/3
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;user href="http://api.myapp.org/users/3"&gt;
+  &lt;name&gt;Alice Adams&lt;/name&gt;
+&lt;/user&gt;</code></code></pre>
         </section>
 
         <section>
           <h2>GET</h2>
           <ul>
             <li>Request a representation of a resource (<span class="smaller">C</span>R<span class="smaller">UD</span>)</li>
-            <li>Safe (no side effects)</li>
-            <li>Crawlable (if discoverable)</li>
+            <li>
+              Safe (no side effects)
+              <ul>
+                <li>Good for crawling</li>
+              </ul>
+            </li>
+            <li>
+              Can use URL params
+              <ul>
+                <li>Useful for filtering collections</li>
+              </ul>
+            </li>
             <li>Caching possibility</li>
           </ul>
         </section>
 
         <section>
           <h2>GET</h2>
+<pre>
+<code class="http" contenteditable>GET /users/3 HTTP/1.1
+Accept: application/xml</code></pre>
+<pre>
+<code class="http" contenteditable>HTTP/1.1 200 OK
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;user href="http://api.myapp.org/users/3"&gt;
+  &lt;name&gt;Alice Adams&lt;/name&gt;
+&lt;/user&gt;
+</code></code></pre>
+        </section>
+
+        <section>
+          <h2>GET</h2>
+<pre>
+<code class="http" contenteditable>GET /users HTTP/1.1
+Accept: application/xml</code></pre>
+<pre>
+<code class="http" contenteditable>HTTP/1.1 200 OK
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;users href="http://api.myapp.org/users"&gt;
+  &lt;user href="http://api.myapp.org/users/2"&gt;
+    &lt;name&gt;Bob Barley&lt;/name&gt;
+  &lt;/user&gt;
+  &lt;user href="http://api.myapp.org/users/3"&gt;
+    &lt;name&gt;Alice Adams&lt;/name&gt;
+  &lt;/user&gt;
+&lt;/users&gt;</code></code></pre>
+        </section>
+
+        <section>
+          <h2>GET</h2>
+<pre>
+<code class="http" contenteditable>GET /users?query=alice HTTP/1.1
+Accept: application/xml</code></pre>
+<pre>
+<code class="http" contenteditable>HTTP/1.1 200 OK
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;users href="http://api.myapp.org/users?query=alice"&gt;
+  &lt;user href="http://api.myapp.org/users/3"&gt;
+    &lt;name&gt;Alice Adams&lt;/name&gt;
+  &lt;/user&gt;
+&lt;/users&gt;</code></code></pre>
         </section>
 
         <section>
@@ -203,31 +277,199 @@
               </ul>
             </li>
           </ul>
-          <li>Send a full representation of the resource</li>
+          <li>PUT with full representation of the resource</li>
+          <li>PATCH with partial representation</li>
         </section>
 
         <section>
           <h2>PUT</h2>
+<pre>
+<code class="http" contenteditable>PUT /users/3 HTTP/1.1
+Accept: application/xml
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;user href="http://api.myapp.org/users/3"&gt;
+  &lt;name&gt;Christine Cooper&lt;/name&gt;
+&lt;/user&gt;</code></code></pre>
+
+<pre>
+<code class="http" contenteditable>HTTP/1.1 200 OK
+Location: http://api.myapp.org/users/3
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;user href="http://api.myapp.org/users/3"&gt;
+  &lt;name&gt;Christine Cooper&lt;/name&gt;
+&lt;/user&gt;</code></code></pre>
+        </section>
+
+        <section>
+          <h2>PUT</h2>
+<pre>
+<code class="http" contenteditable>PUT /books/978-0615314464 HTTP/1.1
+Accept: application/xml
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;book href="http://api.myapp.org/books/978-0615314464"&gt;
+  &lt;title&gt;xkcd: volume 0&lt;/title&gt;
+&lt;/book&gt;</code></code></pre>
+
+<pre>
+<code class="http" contenteditable>HTTP/1.1 201 Created
+Content-Type: application/xml; charset=utf-8
+<code class="xml">
+&lt;book href="http://api.myapp.org/books/978-0615314464"&gt;
+  &lt;title&gt;xkcd: volume 0&lt;/title&gt;
+&lt;/book&gt;</code></code></pre>
         </section>
 
         <section>
           <h2>DELETE</h2>
           <ul>
-            <li>delete a resource</li>
+            <li>Delete a resource (<span class="smaller">CRU</span>D)</li>
           </ul>
         </section>
 
         <section>
           <h2>DELETE</h2>
+<pre>
+<code class="http" contenteditable>DELETE /users/3 HTTP/1.1
+Accept: application/xml</code></pre>
+<pre>
+<code class="http" contenteditable>HTTP/1.1 204 No Content</code></pre>
         </section>
 
         <section>
           <h2>HEAD</h2>
+          <ul>
+            <li>Like GET, but only fetches headers</li>
+            <li>Metainformation should be the same as for GET</li>
+            <li>Useful when checking for existence, caching, etc.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HEAD</h2>
+<pre>
+<code class="http" contenteditable>HEAD /users/2 HTTP/1.1</code></pre>
+<pre>
+<code class="http" contenteditable>HTTP/1.1 200 OK
+Content-Type: application/xml; charset=utf-8
+ETag: "59a2b4c1c160097acb1cf8e0b167975f"
+Cache-Control: max-age=0, private, must-revalidate
+</code></pre>
         </section>
 
         <section>
           <h2>OPTIONS</h2>
+          <ul>
+            <li>Request supported HTTP methods for a URI</li>
+          </ul>
         </section>
+
+        <section>
+          <h2>OPTIONS</h2>
+<pre>
+<code class="http" contenteditable>OPTIONS /users/2 HTTP/1.1
+Accept: application/xml</code></pre>
+<pre>
+<code class="http" contenteditable>HTTP/1.1 204 No Content
+Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
+        </section>
+
+        <section>
+          <h2>Method properties</h2>
+          <ul>
+            <li>Safe - GET, HEAD, OPTIONS</li>
+            <li>Idempotent - PUT, DELETE</li>
+            <li>(All safe methods are also idempotent)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HTTP response codes</h2>
+          <ul>
+            <li>Uniform interface</li>
+            <li>Success vs. error</li>
+            <li>Important to get them right</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HTTP response codes</h2>
+          <ul>
+            <li>1xx Informational</li>
+            <li>2xx Success</li>
+            <li>3xx Redirection</li>
+            <li>4xx Client error</li>
+            <li>5xx Server error</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>Success codes</h2>
+          <ul>
+            <li>200 OK</li>
+            <li>201 Created</li>
+            <li>202 Accepted</li>
+            <li>204 No Content</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Redirection codes</h2>
+          <ul>
+            <li>301 Moved Permanently</li>
+            <li>302 Found</li>
+            <li>304 Not Modified</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Client error codes</h2>
+          <ul>
+            <li>401 Unauthorized</li>
+            <li>403 Forbidden</li>
+            <li>404 Not Found</li>
+            <li>422 Unprocessable Entity</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Server error codes</h2>
+          <ul>
+            <li>500 Internal Server Error</li>
+            <li>503 Service Unavailable</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Basic HTTP REST</h2>
+          <table class="rest">
+            <tr>
+              <td>&nbsp;</td>
+              <td class="header">POST</td>
+              <td class="header">GET</td>
+              <td class="header">PUT</td>
+              <td class="header">DELETE</td>
+            </tr>
+            <tr>
+              <td class="header">Collection</td>
+              <td class="enabled">Create element</td>
+              <td class="enabled">List<br/>(and&nbsp;filter)</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="header">Element</td>
+              <td>&nbsp;</td>
+              <td class="enabled">View</td>
+              <td class="enabled">Update<br/>(or&nbsp;create)</td>
+              <td class="enabled">Delete</td>
+            </tr>
+          </table>
+        </section>
+
 
         <section>
           <p>Default reveal.js slides from now on</p>
