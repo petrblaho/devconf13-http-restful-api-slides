@@ -128,6 +128,19 @@
         </section>
 
         <section>
+          <h2>Resource URL<span class="smaller">s</span></h2>
+<pre>
+<code class="xml" contenteditable>http://api.myapp.org/users
+http://api.myapp.org/books
+
+http://api.myapp.org/users/2
+http://api.myapp.org/books/978-0615314464
+
+http://api.myapp.org/users/2/books</code></pre>
+        </section>
+
+
+        <section>
           <h2>Resource representation</h2>
           <ul>
             <li>Serialized snapshot of resource state</li>
@@ -135,6 +148,20 @@
             <li>Media types</li>
             <li>Current state vs. desired state</li>
           </ul>
+        </section>
+
+
+        <section>
+          <h2>Resource representation</h2>
+<pre>
+<code contenteditable class="xml">&lt;user&gt;
+  &lt;name&gt;Bob Barley&lt;/name&gt;
+&lt;/user&gt;
+</code><code contenteditable class="json">
+{
+  "_type": "user",
+  "name": "Bob Barley"
+}</code></pre>
         </section>
 
         <section>
