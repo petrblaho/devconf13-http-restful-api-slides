@@ -2,6 +2,10 @@
   font-size: 60%;
 }
 
+.deadly {
+  background-color: #550000;
+}
+
 table.rest {
   border-collapse: collapse;
 }

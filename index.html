@@ -379,7 +379,12 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
         <section>
           <h2>Method properties</h2>
           <ul>
-            <li>Safe - GET, HEAD, OPTIONS</li>
+            <li>
+              Safe - GET, HEAD, OPTIONS
+              <ul>
+                <li class="deadly">Never use GET to change state, ever.</li>
+              </ul>
+            </li>
             <li>Idempotent - PUT, DELETE</li>
             <li>(All safe methods are also idempotent)</li>
           </ul>
