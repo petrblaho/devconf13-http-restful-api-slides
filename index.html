@@ -470,6 +470,145 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
           </table>
         </section>
 
+        <section>
+          <h2>
+            Issues when designing RESTful API
+          </h2>
+        </section>
+
+        <section>
+          <h2>
+            Backwards compatibility
+          </h2>
+          <ul>
+            <li>Resource representation</li>
+            <li>Endpoints</li>
+            <li>Versioning</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Resource representation</h2>
+          <ul>
+            <li>Adding</li>
+            <li>Removing</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Endpoints</h2>
+          <ul>
+            <li>URLs of resources should not change</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            Versioning
+          </h2>
+          <ul>
+            <li>URLs
+            <li>Media type</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>URLs</h2>
+          <ul>
+            <li>namespacing - prefix</li>
+            <pre><code class="http" contenteditable>http://example.org/api/v2.0/foo</code></pre>
+            <li>parameters</li>
+            <pre><code class="http" contenteditable>http://example.org/api/foo?version=2.0</code></pre>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Media type</h2>
+          <ul>
+            <li class='fragment'>Version included in media type
+            <pre><code class="http" contenteditable>Accept: application/vnd.example.foo-v2.0+json</code></pre></li>
+            <li class='fragment'>Version as parameter of media type
+            <pre><code class="http" contenteditable>Accept: application/vnd.example.foo+json; version=2.0</code></pre></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            Amount of Discoverability
+          </h2>
+          <ul>
+            <li class='fragment'>Uniform interface</li>
+            <li class='fragment'>HATEOAS</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Uniform interface</h2>
+          <ul>
+            <li>GET</li>
+            <li>POST</li>
+            <li>PUT</li>
+            <li>DELETE</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HATEOAS</h2>
+          <ul>
+            <li>Entry point</li>
+            <li>Hypermedia links</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            Long-running actions
+          </h2>
+          <ul>
+            <li class='fragment'>Blocking request</li>
+            <li class='fragment'>Create job
+            <pre><code class="http" contenteditable>HTTP/1.1 202 Accepted</code></pre></li>
+            <li class='fragment'>Polling for result</li>
+            <li class='fragment'>Hooks</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            M:N relationships
+          </h2>
+          <ul>
+            <li class='fragment'>Is it resource?</li>
+            <li class='fragment'>Subcollections</li>
+            <li class='fragment'>PUT / DELETE</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            Pagination, ordering, filtering
+          </h2>
+          <ul>
+            <li class='fragment'>Is it the same resource?</li>
+            <li class='fragment'>URL path
+            <pre><code class="http" contenteditable>http://example.org/foo/page/1/order/price</code></pre></li>
+            <li class='fragment'>URL query
+            <pre><code class="http" contenteditable>http://example.org/foo?page=1&order=price</code></pre></li>
+            <li class='fragment'>Media type
+            <pre><code class="http" contenteditable>http://example.org/foo</code></pre>
+            <pre><code class="http" contenteditable>Accept: application/vnd.example.foo+json; page=1; order=price</code></pre></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>
+            API and UI
+          </h2>
+          <ul>
+            <li class='fragment'>API + UI next to each other</li>
+            <li class='fragment'>UI build as a client of API</li>
+          </ul>
+        </section>
 
         <section>
           <p>Default reveal.js slides from now on</p>
