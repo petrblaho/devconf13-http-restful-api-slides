@@ -81,12 +81,12 @@
         <section>
           <h2>REST</h2>
           <ul>
-            <li class="fragment">Client-server</li>
-            <li class="fragment">Stateless (request-response)</li>
-            <li class="fragment">Uniform interface</li>
-            <li class="fragment">Caching, layering</li>
-            <li class="fragment">(Code-on-demand)</li>
-            <li class="fragment">Exchange of <em>resource representation</em></li>
+            <li>Client-server</li>
+            <li>Stateless (request-response)</li>
+            <li>Uniform interface</li>
+            <li>Caching</li>
+            <li>(Code-on-demand)</li>
+            <li>Exchange of <em>resource representation</em></li>
           </ul>
           <aside class="notes">
             <p>
@@ -121,11 +121,24 @@
           <h2>Resource</h2>
           <ul>
             <li>Any information that can be named</li>
-            <li>Identity - URI (URL)</li>
+            <li>Identity - URL</li>
             <li>Can be mutable</li>
             <li>Elements, collections</li>
           </ul>
         </section>
+
+        <section>
+          <h2>Resource URL<span class="smaller">s</span></h2>
+<pre>
+<code class="xml" contenteditable>http://api.myapp.org/users
+http://api.myapp.org/books
+
+http://api.myapp.org/users/2
+http://api.myapp.org/books/978-0615314464
+
+http://api.myapp.org/users/2/books</code></pre>
+        </section>
+
 
         <section>
           <h2>Resource representation</h2>
@@ -135,6 +148,20 @@
             <li>Media types</li>
             <li>Current state vs. desired state</li>
           </ul>
+        </section>
+
+
+        <section>
+          <h2>Resource representation</h2>
+<pre>
+<code contenteditable class="xml">&lt;user&gt;
+  &lt;name&gt;Bob Barley&lt;/name&gt;
+&lt;/user&gt;
+</code><code contenteditable class="json">
+{
+  "_type": "user",
+  "name": "Bob Barley"
+}</code></pre>
         </section>
 
         <section>
@@ -162,12 +189,6 @@
           <h2>POST</h2>
           <ul>
             <li>Create a subordinate resource (C<span class="smaller">RUD</span>)</li>
-            <li>Sometimes used to perform a general action
-              <ul>
-                <li>Clashes with Uniform Interface constraint</li>
-                <li>At least make it discoverable</li>
-              </ul>
-            </li>
           </ul>
         </section>
 
@@ -266,13 +287,13 @@ Content-Type: application/xml; charset=utf-8
           <h2>PUT</h2>
           <ul>
             <li>
-              Store a resource to URI
+              Store a resource to a URL
               <ul>
                 <li>Usually for updating (<span class="smaller">CR</span>U<span class="smaller">D</span>)</li>
                 <li>
                   Sometimes for creating (C<span class="smaller">RUD</span>)
                   <ul>
-                    <li>If you know target URI</li>
+                    <li>If you know target URL</li>
                 </li>
               </ul>
             </li>
@@ -362,7 +383,7 @@ Cache-Control: max-age=0, private, must-revalidate
         <section>
           <h2>OPTIONS</h2>
           <ul>
-            <li>Request supported HTTP methods for a URI</li>
+            <li>Request supported HTTP methods for a URL</li>
           </ul>
         </section>
 
@@ -379,7 +400,12 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
         <section>
           <h2>Method properties</h2>
           <ul>
-            <li>Safe - GET, HEAD, OPTIONS</li>
+            <li>
+              Safe - GET, HEAD, OPTIONS
+              <ul>
+                <li class="deadly">Never use GET to change state, ever.</li>
+              </ul>
+            </li>
             <li>Idempotent - PUT, DELETE</li>
             <li>(All safe methods are also idempotent)</li>
           </ul>
