@@ -66,7 +66,7 @@
           <h2>HTTP REST API</h2>
           <ul>
             <li>The major type of public APIs</li>
-            <li>GitHub, Twitter, Facebook, ...</li>
+            <li>Google, GitHub, Twitter, ...</li>
           </ul>
         </section>
 
@@ -134,22 +134,22 @@
           <h2>Resource</h2>
           <ul>
             <li>Any information that can be named</li>
-            <li>Identity - URL</li>
             <li>Can be mutable</li>
-            <li>Elements, collections</li>
+            <li>Identity - URL</li>
+            <li>Collections, elements</li>
           </ul>
         </section>
 
         <section>
           <h2>Resource URL<span class="smaller">s</span></h2>
 <pre>
-<code class="xml" contenteditable>http://api.myapp.org/users
-http://api.myapp.org/books
+<code class="xml" contenteditable>https://api.myapp.org/users
+https://api.myapp.org/books
 
-http://api.myapp.org/users/2
-http://api.myapp.org/books/978-0615314464
+https://api.myapp.org/users/2
+https://api.myapp.org/books/978-0615314464
 
-http://api.myapp.org/users/2/books</code></pre>
+https://api.myapp.org/users/2/books</code></pre>
         </section>
 
 
@@ -157,9 +157,8 @@ http://api.myapp.org/users/2/books</code></pre>
           <h2>Resource representation</h2>
           <ul>
             <li>Serialized snapshot of resource state</li>
+            <li>Hyperlinks</li>
             <li>Resource can have many representations</li>
-            <li>Media types</li>
-            <li>Current state vs. desired state</li>
           </ul>
         </section>
 
@@ -167,12 +166,13 @@ http://api.myapp.org/users/2/books</code></pre>
         <section>
           <h2>Resource representation</h2>
 <pre>
-<code contenteditable class="xml">&lt;user&gt;
+<code contenteditable class="xml">&lt;user href="https://api.myapp.org/users/2"&gt;
   &lt;name&gt;Bob Barley&lt;/name&gt;
 &lt;/user&gt;
 </code><code contenteditable class="json">
 {
   "_type": "user",
+  "_href": "https://api.myapp.org/users/2",
   "name": "Bob Barley"
 }</code></pre>
         </section>
@@ -194,10 +194,10 @@ http://api.myapp.org/users/2/books</code></pre>
         <section>
           <h2>HTTP request methods</h2>
           <ul>
-            <li>POST - C</li>
-            <li>GET - R</li>
-            <li>PUT - U</li>
-            <li>DELETE - D</li>
+            <li>POST</li>
+            <li>GET</li>
+            <li>PUT</li>
+            <li>DELETE</li>
             <li>(HEAD, OPTIONS, ...)</li>
           </ul>
         </section>
@@ -222,10 +222,10 @@ Content-Type: application/xml; charset=utf-8
 
 <pre>
 <code class="http" contenteditable>HTTP/1.1 201 Created
-Location: http://api.myapp.org/users/3
+Location: https://api.myapp.org/users/3
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;user href="http://api.myapp.org/users/3"&gt;
+&lt;user href="https://api.myapp.org/users/3"&gt;
   &lt;name&gt;Alice Adams&lt;/name&gt;
 &lt;/user&gt;</code></code></pre>
         </section>
@@ -234,12 +234,6 @@ Content-Type: application/xml; charset=utf-8
           <h2>GET</h2>
           <ul>
             <li>Request a representation of a resource (<span class="smaller">C</span>R<span class="smaller">UD</span>)</li>
-            <li>
-              Safe (no side effects)
-              <ul>
-                <li>Good for crawling</li>
-              </ul>
-            </li>
             <li>
               Can use URL params
               <ul>
@@ -259,7 +253,7 @@ Accept: application/xml</code></pre>
 <code class="http" contenteditable>HTTP/1.1 200 OK
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;user href="http://api.myapp.org/users/3"&gt;
+&lt;user href="https://api.myapp.org/users/3"&gt;
   &lt;name&gt;Alice Adams&lt;/name&gt;
 &lt;/user&gt;
 </code></code></pre>
@@ -274,11 +268,11 @@ Accept: application/xml</code></pre>
 <code class="http" contenteditable>HTTP/1.1 200 OK
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;users href="http://api.myapp.org/users"&gt;
-  &lt;user href="http://api.myapp.org/users/2"&gt;
+&lt;users href="https://api.myapp.org/users"&gt;
+  &lt;user href="https://api.myapp.org/users/2"&gt;
     &lt;name&gt;Bob Barley&lt;/name&gt;
   &lt;/user&gt;
-  &lt;user href="http://api.myapp.org/users/3"&gt;
+  &lt;user href="https://api.myapp.org/users/3"&gt;
     &lt;name&gt;Alice Adams&lt;/name&gt;
   &lt;/user&gt;
 &lt;/users&gt;</code></code></pre>
@@ -293,8 +287,8 @@ Accept: application/xml</code></pre>
 <code class="http" contenteditable>HTTP/1.1 200 OK
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;users href="http://api.myapp.org/users?query=alice"&gt;
-  &lt;user href="http://api.myapp.org/users/3"&gt;
+&lt;users href="https://api.myapp.org/users?query=alice"&gt;
+  &lt;user href="https://api.myapp.org/users/3"&gt;
     &lt;name&gt;Alice Adams&lt;/name&gt;
   &lt;/user&gt;
 &lt;/users&gt;</code></code></pre>
@@ -326,16 +320,16 @@ Content-Type: application/xml; charset=utf-8
 Accept: application/xml
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;user href="http://api.myapp.org/users/3"&gt;
+&lt;user href="https://api.myapp.org/users/3"&gt;
   &lt;name&gt;Christine Cooper&lt;/name&gt;
 &lt;/user&gt;</code></code></pre>
 
 <pre>
 <code class="http" contenteditable>HTTP/1.1 200 OK
-Location: http://api.myapp.org/users/3
+Location: https://api.myapp.org/users/3
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;user href="http://api.myapp.org/users/3"&gt;
+&lt;user href="https://api.myapp.org/users/3"&gt;
   &lt;name&gt;Christine Cooper&lt;/name&gt;
 &lt;/user&gt;</code></code></pre>
         </section>
@@ -347,7 +341,7 @@ Content-Type: application/xml; charset=utf-8
 Accept: application/xml
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;book href="http://api.myapp.org/books/978-0615314464"&gt;
+&lt;book href="https://api.myapp.org/books/978-0615314464"&gt;
   &lt;title&gt;xkcd: volume 0&lt;/title&gt;
 &lt;/book&gt;</code></code></pre>
 
@@ -355,7 +349,7 @@ Content-Type: application/xml; charset=utf-8
 <code class="http" contenteditable>HTTP/1.1 201 Created
 Content-Type: application/xml; charset=utf-8
 <code class="xml">
-&lt;book href="http://api.myapp.org/books/978-0615314464"&gt;
+&lt;book href="https://api.myapp.org/books/978-0615314464"&gt;
   &lt;title&gt;xkcd: volume 0&lt;/title&gt;
 &lt;/book&gt;</code></code></pre>
         </section>
@@ -380,8 +374,7 @@ Accept: application/xml</code></pre>
           <h2>HEAD</h2>
           <ul>
             <li>Like GET, but only fetches headers</li>
-            <li>Metainformation should be the same as for GET</li>
-            <li>Useful when checking for existence, caching, etc.</li>
+            <li>Metainformation is the same as for GET</li>
           </ul>
         </section>
 
@@ -415,21 +408,16 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
         </section>
 
         <section>
-          <img width="640" height="640" src='./images/one-does-not-simply-use-get-to-change-data.jpg' alt='One does not simply use GET to change data'>
-        </section>
-
-        <section>
           <h2>Method properties</h2>
           <ul>
-            <li>
-              Safe - GET, HEAD, OPTIONS
-              <ul>
-                <li class="deadly">Never use GET to change state, ever.</li>
-              </ul>
-            </li>
+            <li>Safe - GET, HEAD, OPTIONS</li>
             <li>Idempotent - PUT, DELETE</li>
             <li>(All safe methods are also idempotent)</li>
           </ul>
+        </section>
+
+        <section>
+          <img width="640" height="640" src='./images/one-does-not-simply-use-get-to-change-data.jpg' alt='One does not simply use GET to change data'>
         </section>
 
         <section>
@@ -458,17 +446,7 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
           <ul>
             <li>200 OK</li>
             <li>201 Created</li>
-            <li>202 Accepted</li>
             <li>204 No Content</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Redirection codes</h2>
-          <ul>
-            <li>301 Moved Permanently</li>
-            <li>302 Found</li>
-            <li>304 Not Modified</li>
           </ul>
         </section>
 
@@ -478,6 +456,7 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
             <li>401 Unauthorized</li>
             <li>403 Forbidden</li>
             <li>404 Not Found</li>
+            <li>418 I'm a Teapot</li>
             <li>422 Unprocessable Entity</li>
           </ul>
         </section>
@@ -515,6 +494,29 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
               <td class="enabled">Delete</td>
             </tr>
           </table>
+        </section>
+
+        <section>
+          <h2>Easy to consume</h2>
+          <ul>
+            <li>Conventions</li>
+            <li>Tools</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Conventions</h2>
+<pre>
+<code class="http" contenteditable>GET /plus/v1/activities?query=devconf HTTP/1.1</code></pre>
+<pre>
+<code class="http" contenteditable>GET /1.1/search/tweets.json?q=devconf HTTP/1.1</code></pre>
+<pre>
+<code class="http" contenteditable>GET /repos/aeolus-incubator/thor-cli/issues?labels=enhancement HTTP/1.1</code></pre>
+        </section>
+
+        <section>
+          <h2>Tools</h2>
+          <a target="_blank" href="https://api.github.com/repos/aeolus-incubator/thor-cli/issues?labels=enhancement">https://api.github.com/repos/aeolus-incubator/thor-cli/issues?labels=enhancement</a>
         </section>
 
         <section>
@@ -978,6 +980,7 @@ function linkify( selector ) {
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        rollingLinks: false,
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
