@@ -64,9 +64,13 @@
 
         <section>
           <h2>HTTP REST API</h2>
+        </section>
+
+        <section>
+          <h2>Popular</h2>
           <ul>
-            <li>The major type of public APIs</li>
-            <li>Google, GitHub, Twitter, ...</li>
+            <li>Especially for public APIs</li>
+            <li>GitHub, Twitter, OpenStack...</li>
           </ul>
         </section>
 
@@ -97,8 +101,7 @@
           <ul>
             <li>Client-server</li>
             <li>Stateless (request-response)</li>
-            <li>Uniform interface</li>
-            <li>Caching</li>
+            <li><em>Resources</em> with uniform interface</li>
             <li>Exchange of <em>resource representation</em></li>
           </ul>
           <aside class="notes">
@@ -162,7 +165,6 @@ https://api.myapp.org/users/2/books</code></pre>
           </ul>
         </section>
 
-
         <section>
           <h2>Resource representation</h2>
 <pre>
@@ -184,17 +186,16 @@ https://api.myapp.org/users/2/books</code></pre>
         <section>
           <h2>HTTP</h2>
           <ul>
-            <li>Provides uniform interface</li>
-            <li>Standard request methods</li>
+            <li>Uniform interface</li>
             <li>Standard response codes</li>
-            <li>HTTP REST is often used as CRUD</li>
+            <li>Standard request methods</li>
           </ul>
         </section>
 
         <section>
           <h2>HTTP response codes</h2>
           <ul>
-            <li>Uniform interface</li>
+            <li>Request processing result</li>
             <li>Success vs. error</li>
           </ul>
         </section>
@@ -225,7 +226,6 @@ https://api.myapp.org/users/2/books</code></pre>
             <li>401 Unauthorized</li>
             <li>403 Forbidden</li>
             <li>404 Not Found</li>
-            <li>418 I'm a Teapot</li>
             <li>422 Unprocessable Entity</li>
           </ul>
         </section>
@@ -235,6 +235,13 @@ https://api.myapp.org/users/2/books</code></pre>
           <ul>
             <li>500 Internal Server Error</li>
             <li>503 Service Unavailable</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>HTTP request methods</h2>
+          <ul>
+            <li>Mainly used as CRUD</li>
           </ul>
         </section>
 
@@ -252,7 +259,7 @@ https://api.myapp.org/users/2/books</code></pre>
         <section>
           <h2>POST</h2>
           <ul>
-            <li>Create a subordinate resource (C<span class="smaller">RUD</span>)</li>
+            <li>Create a resource (C<span class="smaller">RUD</span>)</li>
           </ul>
         </section>
 
@@ -356,8 +363,6 @@ Content-Type: application/xml; charset=utf-8
               </ul>
             </li>
           </ul>
-          <li>PUT with full representation of the resource</li>
-          <li>PATCH with partial representation</li>
         </section>
 
         <section>
@@ -459,7 +464,6 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
           <ul>
             <li>Safe - GET, HEAD, OPTIONS</li>
             <li>Idempotent - PUT, DELETE</li>
-            <li>(All safe methods are also idempotent)</li>
           </ul>
         </section>
 
