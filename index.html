@@ -69,7 +69,6 @@
         <section>
           <h2>Popular</h2>
           <ul>
-            <li>Especially for public APIs</li>
             <li>GitHub, Twitter, OpenStack...</li>
           </ul>
         </section>
@@ -77,8 +76,8 @@
         <section>
           <h2>Easy to consume</h2>
           <ul>
+            <li>First steps</li>
             <li>Conventions</li>
-            <li>Tools</li>
           </ul>
         </section>
 
@@ -501,24 +500,24 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
         <section>
           <h2>Easy to consume</h2>
           <ul>
+            <li>First steps</li>
             <li>Conventions</li>
-            <li>Tools</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>First steps</h2>
+          <a target="_blank" href="https://api.github.com/repos/aeolus-incubator/thor-cli/issues?labels=enhancement">https://api.github.com/repos/aeolus-incubator/thor-cli/issues?labels=enhancement</a>
         </section>
 
         <section>
           <h2>Conventions</h2>
 <pre>
+<code class="http" contenteditable>GET /repos/aeolus-incubator/thor-cli/issues?labels=enhancement HTTP/1.1</code></pre>
+<pre>
 <code class="http" contenteditable>GET /plus/v1/activities?query=devconf HTTP/1.1</code></pre>
 <pre>
 <code class="http" contenteditable>GET /1.1/search/tweets.json?q=devconf HTTP/1.1</code></pre>
-<pre>
-<code class="http" contenteditable>GET /repos/aeolus-incubator/thor-cli/issues?labels=enhancement HTTP/1.1</code></pre>
-        </section>
-
-        <section>
-          <h2>Tools</h2>
-          <a target="_blank" href="https://api.github.com/repos/aeolus-incubator/thor-cli/issues?labels=enhancement">https://api.github.com/repos/aeolus-incubator/thor-cli/issues?labels=enhancement</a>
         </section>
 
         <section>
@@ -679,6 +678,16 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
             <li>Jiri Stransky (<a href='https://twitter.com/jistr' title='Jiri Stransky @ Twitter'>@jistr</a>)</li>
           </ul>
         </section>
+
+        <section>
+          <h3>Sources and links</h3>
+          <ul>
+            <li><a href="http://tomayko.com/writings/rest-to-my-wife">How I explained REST to my wife</a></li>
+            <li><a href="https://restful-api-design.readthedocs.org/en/latest">Thoughts on RESTful API Design</a></li>
+            <li><a href="http://watzmann.net/blog/2012/12/dont-hate-the-hateos.html">Don't hate HATEOS</a></li>
+            <li><a href="http://roy.gbiv.com/untangled/2009/it-is-okay-to-use-post">It is okay to use POST</a></li>
+          </ul>
+        </section>
       </div>
 
     </div>
@@ -695,6 +704,7 @@ Allow: OPTIONS, HEAD, GET, PUT, DELETE</code></pre>
         progress: false,
         history: true,
         center: true,
+        mouseWheel: true,
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
